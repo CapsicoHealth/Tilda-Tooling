@@ -25,6 +25,8 @@ JSON.parseWithComments = function(jsonText)
         // console.error(friendlyName);
         var references = [];
         _.each(value.primaryColumns, function(column, j){
+          if (column.sameas == null)
+            column.sameas = column.sameAs;
           if(column.sameas != null){
             var sameas = column.sameas.split(".").reverse();
             var reference = sameas[1];
@@ -42,6 +44,8 @@ JSON.parseWithComments = function(jsonText)
         if(_type.toLowerCase() == "view")
         {
           _.each(value.columns, function(column, j){
+            if (column.sameas == null)
+              column.sameas = column.sameAs;
             if(column.sameas != null){
               var sameas = column.sameas.split(".").reverse();
               var reference = sameas[1];
